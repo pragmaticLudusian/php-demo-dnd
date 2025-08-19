@@ -8,14 +8,15 @@
 </head>
 
 <body>
-  <form action="createDB.php" method="GET">
+  <form action="db-create.php" method="GET">
     <p>Database not found! Create one?</p>
     <input type="submit" value="Create DB">
   </form>
   <?php
   /* TODO
-    create db "DnD"
-    then create table "Characters" with Name, Class, STR, DEX, CON, INT, WIS, CHR
+    find db and table:
+      if found, redir to manage characters
+      else, show prompt to create the db
   */
   ?>
 </body>
