@@ -8,7 +8,7 @@ if (isset($_GET['q'])) {
   $sql = "SELECT * FROM characters WHERE name LIKE '$quest%'"; // % is a wildcard, in this case contains or even begins with
   $res = mysqli_query($con, $sql);
   if (mysqli_num_rows($res) == 0) {
-    echo "no suggestiones";
+    echo "<tr><td colspan='9'>no suggestiones</td></tr>";
   } else {
     while ($row = mysqli_fetch_assoc($res)) {
       echo '<tr>';

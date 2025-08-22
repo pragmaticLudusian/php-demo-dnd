@@ -17,8 +17,7 @@
 
   <?php
   /* TODO
-    build search interface using ajax
-      tbd in current index page, once the db+table is initialized (?)
+    create delete page by showing the table with checkmarks and confirmation dialog
   */
   include 'db-conf.php';
 
@@ -75,7 +74,21 @@
   }
   mysqli_close($con);
   ?>
-  <script src="ajax.js"></script>
+  <script>
+    var opt = document.getElementById("options");
+    var xmlhttp = new XMLHttpRequest(); // response prep
+
+    function ajaxHint(string) {
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          opt.innerHTML = this.responseText; // echo html elements responds right here
+        }
+      };
+      xmlhttp.open("GET", "hint.php?q=" + string, true); // true being async; opens channel to insert the needed HTML elements
+      xmlhttp.send(); // end response
+    }
+    ajaxHint(""); // show entire table on page load
+  </script>
 </body>
 
 </html>
