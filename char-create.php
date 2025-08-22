@@ -25,8 +25,31 @@
     ';
   ?>
   <?php
+  include 'db-conf.php';
   if (isset($_POST['Name'])) {
-    echo $_POST['Str']; // case-sensitive to name property
+    $name = $_POST['Name']; // case-sensitive to name property
+    $class = $_POST['Class'];
+    $level = $_POST['Level'];
+    $strength = $_POST['Str'];
+    $dexterity = $_POST['Dex'];
+    $constitution = $_POST['Con'];
+    $intelligence = $_POST['Int'];
+    $wisdom = $_POST['Wis'];
+    $charisma = $_POST['Cha'];
+
+    $con = mysqli_connect(HOST, USER, PASS, DB)
+      or die("Connection Error" . mysqli_error($con));
+    mysqli_set_charset($con, "utf8");
+
+    $sql = "INSERT INTO characters (name,class,lvl,str,dex,con,`int`,wis,cha)
+            VALUES('$name','$class','$level','$strength','$dexterity','$constitution','$intelligence','$wisdom','$charisma')";
+    if (mysqli_query($con, $sql)) {
+      echo "<h1>Insert successfully</h1>";
+    } else {
+      echo "<h1>Insert Error: " . mysqli_error($con) . "</h1>";
+    }
+    mysqli_close($con);
+    header("refresh:3; url=index.php");
   }
   ?>
 </body>
