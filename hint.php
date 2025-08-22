@@ -11,10 +11,17 @@ if (isset($_GET['q'])) {
     echo "no suggestiones";
   } else {
     while ($row = mysqli_fetch_assoc($res)) {
-      echo "<div style='display:inline-block; margin=20px;'>";
-      echo "<img src='" . $row['image'] . "' style='height:100px;'>";
-      echo "<h2>" . $row['name'] . "</h2>";
-      echo "</div>";
+      echo '<tr>';
+      echo '<td>' . $row['name'] . '</td>';
+      echo '<td>' . $row['lvl'] . '</td>';
+      echo '<td>' . $row['class'] . '</td>';
+      echo '<td>' . $row['str'] . '</td>';
+      echo '<td>' . $row['dex'] . '</td>';
+      echo '<td>' . $row['con'] . '</td>';
+      echo '<td>' . $row['int'] . '</td>';
+      echo '<td>' . $row['wis'] . '</td>';
+      echo '<td>' . $row['cha'] . '</td>';
+      echo '</tr>';
     }
   }
 }

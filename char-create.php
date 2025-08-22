@@ -50,6 +50,7 @@
     }
     mysqli_close($con);
     header("refresh:3; url=index.php");
+    exit(); // safety cap solution
   }
   ?>
 </body>

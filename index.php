@@ -17,8 +17,6 @@
 
   <?php
   /* TODO
-    add the name, class and stats using a form and submit to add to db
-      tbd in a separate page for simplicity's sake
     build search interface using ajax
       tbd in current index page, once the db+table is initialized (?)
   */
@@ -44,13 +42,13 @@
       <a href="index.php">Search</a>
       <a href="char-create.php">Create</a>
       <a href="char-delete.php">Delete</a>
-    ';
+    '; // navbar
+
     echo '
     <form>
       <input type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="whatch lookin\' for?" autofocus>
-      <div id="options"></div>
     </form>
-    ';
+    '; // search/filter
 
     $sql = "SELECT * FROM characters"; // query the table
     $res = mysqli_query($con, $sql);
@@ -70,8 +68,9 @@
           <th>WIS</th>
           <th>CHA</th>
         </tr>
-      </table>
-    ';
+      ';
+      echo '<tbody id="options"></tbody>';
+      echo '</table>';
     }
   }
   mysqli_close($con);

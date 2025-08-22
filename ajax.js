@@ -11,6 +11,6 @@ function ajaxHint(str) {
       opt.innerHTML = this.responseText; // echo <div> responds here </div>
     }
   };
-  xmlhttp.open("GET", "hint.php?q=" + str, true); // true being async; opens channel
+  xmlhttp.open("GET", "hint.php?q=" + str, true); // true being async; opens channel to insert the needed HTML elements
   xmlhttp.send(); // end response
 }
