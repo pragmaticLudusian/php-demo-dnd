@@ -45,7 +45,7 @@
 
     echo '
     <form>
-      <input type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="whatch lookin\' for?" autofocus>
+      <input type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="char name" autofocus>
     </form>
     '; // search/filter
 
@@ -56,39 +56,49 @@
     } else {
       echo '
       <table>
-        <tr>
-          <th>Name</th>
-          <th>LV</th>
-          <th>Class</th>
-          <th>STR</th>
-          <th>DEX</th>
-          <th>CON</th>
-          <th>INT</th>
-          <th>WIS</th>
-          <th>CHA</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>LV</th>
+            <th>Class</th>
+            <th>STR</th>
+            <th>DEX</th>
+            <th>CON</th>
+            <th>INT</th>
+            <th>WIS</th>
+            <th>CHA</th>
+          </tr>
+        </thead>
       ';
       echo '<tbody id="options"></tbody>';
-      echo '</table>';
     }
+
+    $sql = "SELECT * FROM characters"; // select all characters from table
+    $res = mysqli_query($con, $sql);
+    if (!mysqli_num_rows($res)) {
+      echo "<tr><td colspan='9'>no suggestiones</td></tr>";
+    } else {
+      echo '<tbody id="starter-options">';
+      while ($row = mysqli_fetch_assoc($res)) {
+        echo '<tr class="table-row">';
+        echo '<td>' . $row['name'] . '</td>';
+        echo '<td>' . $row['lvl'] . '</td>';
+        echo '<td>' . $row['class'] . '</td>';
+        echo '<td>' . $row['str'] . '</td>';
+        echo '<td>' . $row['dex'] . '</td>';
+        echo '<td>' . $row['con'] . '</td>';
+        echo '<td>' . $row['int'] . '</td>';
+        echo '<td>' . $row['wis'] . '</td>';
+        echo '<td>' . $row['cha'] . '</td>';
+        echo '</tr>';
+      }
+      echo '</tbody>';
+    }
+    echo '</table>';
   }
   mysqli_close($con);
   ?>
-  <script>
-    var opt = document.getElementById("options");
-    var xmlhttp = new XMLHttpRequest(); // response prep
-
-    function ajaxHint(string) {
-      xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          opt.innerHTML = this.responseText; // echo html elements responds right here
-        }
-      };
-      xmlhttp.open("GET", "hint.php?q=" + string, true); // true being async; opens channel to insert the needed HTML elements
-      xmlhttp.send(); // end response
-    }
-    ajaxHint(""); // show entire table on page load
-  </script>
+  <script src="ajax.js"></script>
 </body>
 
 </html>
