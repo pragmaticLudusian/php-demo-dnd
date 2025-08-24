@@ -5,7 +5,7 @@ $con = mysqli_connect(HOST, USER, PASS, DB);
 
 if (isset($_GET['q'])) {
   $quest = $_GET['q'];
-  $sql = "SELECT * FROM characters WHERE name LIKE '$quest%'"; // % is a wildcard, in this case contains or even begins with
+  $sql = "SELECT * FROM characters" . (empty($quest) ? "" : " WHERE name LIKE '$quest%'"); // search all if no search term is specified; % is a wildcard, in this case begins with term
   $res = mysqli_query($con, $sql);
   if (!mysqli_num_rows($res)) {
     echo "<tr><td colspan='9'>no suggestiones</td></tr>";

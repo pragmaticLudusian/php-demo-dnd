@@ -70,27 +70,24 @@
           </tr>
         </thead>
       ';
+      // preload table on page load - repeated code but more functional w/out needing to create another #id section
+      echo '<tbody id="options">';
 
-      echo '<tbody id="starter-options">';
-      if (!mysqli_num_rows($res)) {
-        echo "<tr><td colspan='9'>no suggestiones</td></tr>";
-      } else {
-        while ($row = mysqli_fetch_assoc($res)) {
-          echo '<tr class="table-row">';
-          echo '<td>' . $row['name'] . '</td>';
-          echo '<td>' . $row['lvl'] . '</td>';
-          echo '<td>' . $row['class'] . '</td>';
-          echo '<td>' . $row['str'] . '</td>';
-          echo '<td>' . $row['dex'] . '</td>';
-          echo '<td>' . $row['con'] . '</td>';
-          echo '<td>' . $row['int'] . '</td>';
-          echo '<td>' . $row['wis'] . '</td>';
-          echo '<td>' . $row['cha'] . '</td>';
-          echo '</tr>';
-        }
+      while ($row = mysqli_fetch_assoc($res)) {
+        echo '<tr class="table-row">';
+        echo '<td>' . $row['name'] . '</td>';
+        echo '<td>' . $row['lvl'] . '</td>';
+        echo '<td>' . $row['class'] . '</td>';
+        echo '<td>' . $row['str'] . '</td>';
+        echo '<td>' . $row['dex'] . '</td>';
+        echo '<td>' . $row['con'] . '</td>';
+        echo '<td>' . $row['int'] . '</td>';
+        echo '<td>' . $row['wis'] . '</td>';
+        echo '<td>' . $row['cha'] . '</td>';
+        echo '</tr>';
       }
+
       echo '</tbody>';
-      echo '<tbody id="options"></tbody>'; // for ajax.js / hint.php search filtration system
       echo '</table>';
     }
   }
