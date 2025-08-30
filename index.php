@@ -87,8 +87,10 @@
         echo '</tr>';
       }
 
-      echo '</tbody>';
-      echo '</table>';
+      echo '
+        </tbody>
+      </table>
+      ';
     }
   }
   mysqli_close($con);
