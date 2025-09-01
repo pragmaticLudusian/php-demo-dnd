@@ -21,36 +21,37 @@
     or die("Connection Error" . mysqli_error($con));
 
   echo '
-      <a href="index.php">Search</a>
-      <a href="char-create.php">Create</a>
-      <a href="char-delete.php">Delete</a>
-    '; // navbar
+  <a href="index.php">Search</a>
+  <a href="char-create.php">Create</a>
+  <a href="char-delete.php">Delete</a>
+  '; // navbar
 
   $sql = "SELECT * FROM characters";
   $res = mysqli_query($con, $sql);
 
   echo '
-  <table>
-    <thead>
-      <tr>
-        <th>DEL</th>
-        <th>Name</th>
-        <th>LV</th>
-        <th>Class</th>
-        <th>STR</th>
-        <th>DEX</th>
-        <th>CON</th>
-        <th>INT</th>
-        <th>WIS</th>
-        <th>CHA</th>
-      </tr>
-    </thead>
+  <form action="index.php" method="POST">
+    <table>
+      <thead>
+        <tr>
+          <th>DEL</th>
+          <th>Name</th>
+          <th>LV</th>
+          <th>Class</th>
+          <th>STR</th>
+          <th>DEX</th>
+          <th>CON</th>
+          <th>INT</th>
+          <th>WIS</th>
+          <th>CHA</th>
+        </tr>
+      </thead>
   ';
   echo '<tbody id="options">';
 
   while ($row = mysqli_fetch_assoc($res)) {
     echo '<tr class="table-row">';
-    echo '<td><input type="checkbox" id="char-' . $row['id'] . '"></td>';
+    echo '<td><input type="checkbox" class="char-checkbox" id="char-' . $row['id'] . '"></td>';
     echo '<td>' . $row['name'] . '</td>';
     echo '<td>' . $row['lvl'] . '</td>';
     echo '<td>' . $row['class'] . '</td>';
@@ -64,11 +65,14 @@
   }
 
   echo '
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+    <input type="submit" value="Delete selected (0)" onclick="ajaxDelete(this)">
+  </form>
   ';
   mysqli_close($con);
   ?>
+  <script src="ajax.js"></script>
 </body>
 
 </html>

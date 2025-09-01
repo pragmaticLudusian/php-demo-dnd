@@ -10,3 +10,16 @@ function ajaxHint(string) {
   xmlhttp.open("GET", "hint.php?q=" + string, true); // true being async; opens channel to insert the needed HTML elements
   xmlhttp.send(); // end response
 }
+
+function ajaxDelete(string) {
+  // console.log(string);
+  const selectedChars = document.querySelectorAll(".char-checkbox");
+  const delArray = [];
+  selectedChars.forEach((char) => {
+    if (char.checked) delArray.push(parseInt(char.id.replace("char-", "")));
+  });
+  if (delArray.length) {
+    xmlhttp.open("GET", "delete.php?q=" + delArray.join(","), false);
+    xmlhttp.send();
+  }
+}
