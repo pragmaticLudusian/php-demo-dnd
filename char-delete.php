@@ -67,7 +67,7 @@
   echo '
       </tbody>
     </table>
-    <input type="submit" value="Delete selected (0)" onclick="ajaxDelete(this)">
+    <input type="submit" value="Delete selected" onclick="ajaxDelete()">
   </form>
   ';
   mysqli_close($con);

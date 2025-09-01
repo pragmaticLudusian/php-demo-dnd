@@ -11,7 +11,7 @@ function ajaxHint(string) {
   xmlhttp.send(); // end response
 }
 
-function ajaxDelete(string) {
+function ajaxDelete() {
   // console.log(string);
   const selectedChars = document.querySelectorAll(".char-checkbox");
   const delArray = [];
@@ -21,5 +21,7 @@ function ajaxDelete(string) {
   if (delArray.length) {
     xmlhttp.open("GET", "delete.php?q=" + delArray.join(","), false);
     xmlhttp.send();
+  } else {
+    event.preventDefault(); // how else to refer to the Window.event..?
   }
 }
