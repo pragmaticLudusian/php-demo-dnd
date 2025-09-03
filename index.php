@@ -27,7 +27,7 @@
   $res = mysqli_query($con, $sql);
   if (!mysqli_num_rows($res)) { // if db doesn't exist
     echo '
-      <form action="db-create.php" method="GET">
+      <form action="db-create.php">
         <p>Database not found! Create one?</p>
         <input type="submit" value="Create DB">
       </form>

@@ -30,7 +30,7 @@
   $res = mysqli_query($con, $sql);
 
   echo '
-  <form id="delete-form" action="index.php" method="POST">
+  <form id="delete-form" action="index.php" method="POST" onsubmit="ajaxDelete()">
     <table>
       <thead>
         <tr>
@@ -67,15 +67,18 @@
   echo '
       </tbody>
     </table>
-    <input class="form__delete-button" type="submit" value="Delete selected" onclick="ajaxDelete()" disabled>
+    <input class="form__delete-button" type="submit" value="Delete selected" disabled>
   </form>
   ';
   mysqli_close($con);
   ?>
   <script src="ajax.js"></script>
   <script>
+    // inline script for this page's to make the button be interactive - the php's portion is for the deletion function
     const form = document.forms["delete-form"];
     const button = form.querySelector(".form__delete-button");
+    handleCheckbox(); // retain after refresh
+
     function handleCheckbox() {
       const checkboxes = Array.from(form.querySelectorAll(".form__checkbox"));
       const checkedBoxes = checkboxes.filter((checkbox) => {
