@@ -44,7 +44,7 @@
     $sql = "INSERT INTO characters (name,class,lvl,str,dex,con,`int`,wis,cha)
             VALUES('$name','$class','$level','$strength','$dexterity','$constitution','$intelligence','$wisdom','$charisma')";
     if (mysqli_query($con, $sql)) {
-      echo "<h1>Insert successfully</h1>";
+      echo "<h1>Character added!</h1>";
     } else {
       echo "<h1>Insert Error: " . mysqli_error($con) . "</h1>";
     }

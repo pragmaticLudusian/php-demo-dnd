@@ -4,12 +4,9 @@ include 'db-conf.php';
 $con = mysqli_connect(HOST, USER, PASS);
 mysqli_set_charset($con, "utf8"); // must
 
-// $database_name = $_GET['db_name'];
 // create database "dnd"
 $sql = "CREATE DATABASE dnd CHARACTER SET utf8";
-if (mysqli_query($con, $sql)) {
-  echo "<h1>Database Created successfully</h1>";
-} else {
+if (!(mysqli_query($con, $sql))) {
   echo "<h1>Database Error: " . mysqli_error($con) . "</h1>";
 }
 mysqli_close($con); // also must
@@ -33,7 +30,7 @@ $sql = "CREATE TABLE characters(
   created TIMESTAMP)";
 
 if (mysqli_query($con, $sql)) {
-  echo "<h1>Table Created successfully</h1>";
+  echo "<h1>Database initialized successfully!</h1>";
 } else {
   echo "<h1>Table Error: " . mysqli_error($con) . "</h1>";
 }

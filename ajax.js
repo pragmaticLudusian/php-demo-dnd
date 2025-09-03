@@ -12,7 +12,6 @@ function ajaxHint(string) {
 }
 
 function ajaxDelete() {
-  // console.log(string);
   const selectedChars = document.querySelectorAll(".form__checkbox");
   const delArray = [];
   selectedChars.forEach((char) => {
