@@ -1,6 +1,5 @@
 <?php
-include_once 'conf.php';
-include 'func.php';
+include 'func.php'; // conf.php is already included
 if (!isDatabaseExist()) {
   header('Location: index.php'); // redirect to main page
   exit();

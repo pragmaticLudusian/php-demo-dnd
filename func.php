@@ -1,5 +1,5 @@
 <?php
-include_once 'conf.php'; // scope applies only to this file
+include 'conf.php'; // scope applies only to this file
 
 function isDatabaseExist()
 {

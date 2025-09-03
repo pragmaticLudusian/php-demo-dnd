@@ -19,8 +19,7 @@
     gate pages being only accessible with db
     style additions
   */
-  include 'func.php';
-  // include 'conf.php';
+  include 'func.php'; // conf.php is already included
 
   if (!isDatabaseExist()) { // if db doesn't exist
     echo '
