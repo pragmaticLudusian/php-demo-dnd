@@ -30,7 +30,7 @@
   $res = mysqli_query($con, $sql);
 
   echo '
-  <form id="delete-form" action="index.php" method="POST" onsubmit="ajaxDelete()">
+  <form id="delete-form" action="index.php" method="POST" onsubmit="ajaxDelete(event)">
     <table>
       <thead>
         <tr>
@@ -51,7 +51,7 @@
 
   while ($row = mysqli_fetch_assoc($res)) {
     echo '<tr class="table-row">';
-    echo '<td><input type="checkbox" class="form__checkbox" onchange="handleCheckbox(this)" id="char-' . $row['id'] . '"></td>';
+    echo '<td><input type="checkbox" class="form__checkbox" onchange="handleCheckbox()" id="char-' . $row['id'] . '"></td>';
     echo '<td>' . $row['name'] . '</td>';
     echo '<td>' . $row['lvl'] . '</td>';
     echo '<td>' . $row['class'] . '</td>';

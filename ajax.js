@@ -11,14 +11,25 @@ function ajaxHint(string) {
   xmlhttp.send(); // end response
 }
 
-function ajaxDelete() {
+function ajaxDelete(event) {
   const selectedChars = document.querySelectorAll(".form__checkbox");
   const delArray = [];
   selectedChars.forEach((char) => {
     if (char.checked) delArray.push(parseInt(char.id.replace("char-", "")));
   });
 
-  if (!delArray.length) return; // assume (delArray.length)
-  xmlhttp.open("GET", "delete.php?q=" + delArray.join(","), false);
-  xmlhttp.send();
+  let isConfirmed = confirm(
+    `Are you sure you want to delete th${
+      delArray.length === 1 ? "is" : "ese"
+    } ${delArray.length} character${delArray.length === 1 ? "" : "s"}?`
+  );
+  if (isConfirmed) {
+    if (!delArray.length) return; // assume (delArray.length)
+    xmlhttp.open("GET", "delete.php?q=" + delArray.join(","), false);
+    xmlhttp.send();
+  } else {
+    // even if denied, form action will still take effect unless preventDefault is used (passed from onsubmit)
+    event.preventDefault();
+    return;
+  }
 }
