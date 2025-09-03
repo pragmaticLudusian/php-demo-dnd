@@ -1,5 +1,5 @@
 <?php
-include "db-conf.php";
+include "conf.php";
 
 $con = mysqli_connect(HOST, USER, PASS, DB);
 

@@ -1,6 +1,6 @@
 <?php
 header('Location: index.php'); // doesn't redirect except for direct access
-include "db-conf.php";
+include "conf.php";
 
 $con = mysqli_connect(HOST, USER, PASS, DB);
 
