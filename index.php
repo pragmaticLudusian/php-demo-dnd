@@ -14,18 +14,15 @@
 </head>
 
 <body>
-
   <?php
   /* TODO
-    create delete page by showing the table with checkmarks and confirmation dialog
+    gate pages being only accessible with db
+    style additions
   */
-  include 'db-conf.php';
+  include 'func.php';
+  // include 'conf.php';
 
-  $con = mysqli_connect(HOST, USER, PASS);
-  mysqli_set_charset($con, "utf8");
-  $sql = "SELECT schema_name FROM information_schema.schemata WHERE schema_name='dnd'"; // find out if the db+table already exist
-  $res = mysqli_query($con, $sql);
-  if (!mysqli_num_rows($res)) { // if db doesn't exist
+  if (!isDatabaseExist()) { // if db doesn't exist
     echo '
       <form action="db-create.php">
         <p>Database not found! Create one?</p>
@@ -33,7 +30,6 @@
       </form>
     ';
   } else { // if db does exist
-    mysqli_close($con); // close db-less connection...
     $con = mysqli_connect(HOST, USER, PASS, DB)
       or die("Connection Error" . mysqli_error($con)); // and restart connection w/ DB set, now that it exists
 
@@ -92,8 +88,8 @@
       </table>
       ';
     }
+    mysqli_close($con);
   }
-  mysqli_close($con);
   ?>
   <script src="ajax.js"></script>
 </body>
