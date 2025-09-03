@@ -17,10 +17,8 @@ function ajaxDelete() {
   selectedChars.forEach((char) => {
     if (char.checked) delArray.push(parseInt(char.id.replace("char-", "")));
   });
-  if (delArray.length) {
-    xmlhttp.open("GET", "delete.php?q=" + delArray.join(","), false);
-    xmlhttp.send();
-  } else {
-    event.preventDefault(); // how else to refer to the Window.event..?
-  }
+
+  if (!delArray.length) return; // assume (delArray.length)
+  xmlhttp.open("GET", "delete.php?q=" + delArray.join(","), false);
+  xmlhttp.send();
 }
