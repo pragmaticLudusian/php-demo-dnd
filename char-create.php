@@ -1,3 +1,11 @@
+<?php
+include_once 'conf.php';
+include 'func.php';
+if (!isDatabaseExist()) {
+  header('Location: index.php'); // redirect to main page
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +33,6 @@
     ';
   ?>
   <?php
-  include 'db-conf.php';
   if (isset($_POST['Name'])) {
     $name = $_POST['Name']; // case-sensitive to name property
     $class = $_POST['Class'];

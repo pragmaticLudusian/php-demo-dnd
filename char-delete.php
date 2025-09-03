@@ -1,3 +1,11 @@
+<?php
+include_once 'conf.php';
+include 'func.php';
+if (!isDatabaseExist()) {
+  header('Location: index.php'); // redirect to main page
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +23,6 @@
 
 <body>
   <?php
-  include 'db-conf.php';
 
   $con = mysqli_connect(HOST, USER, PASS, DB)
     or die("Connection Error" . mysqli_error($con));
