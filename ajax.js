@@ -13,7 +13,7 @@ function ajaxHint(string) {
 
 function ajaxDelete() {
   // console.log(string);
-  const selectedChars = document.querySelectorAll(".char-checkbox");
+  const selectedChars = document.querySelectorAll(".form__checkbox");
   const delArray = [];
   selectedChars.forEach((char) => {
     if (char.checked) delArray.push(parseInt(char.id.replace("char-", "")));

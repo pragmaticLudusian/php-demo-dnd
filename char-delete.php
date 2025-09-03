@@ -30,7 +30,7 @@
   $res = mysqli_query($con, $sql);
 
   echo '
-  <form action="index.php" method="POST">
+  <form id="delete-form" action="index.php" method="POST">
     <table>
       <thead>
         <tr>
@@ -51,7 +51,7 @@
 
   while ($row = mysqli_fetch_assoc($res)) {
     echo '<tr class="table-row">';
-    echo '<td><input type="checkbox" class="char-checkbox" id="char-' . $row['id'] . '"></td>';
+    echo '<td><input type="checkbox" class="form__checkbox" onchange="handleCheckbox(this)" id="char-' . $row['id'] . '"></td>';
     echo '<td>' . $row['name'] . '</td>';
     echo '<td>' . $row['lvl'] . '</td>';
     echo '<td>' . $row['class'] . '</td>';
@@ -67,12 +67,28 @@
   echo '
       </tbody>
     </table>
-    <input type="submit" value="Delete selected" onclick="ajaxDelete()">
+    <input class="form__delete-button" type="submit" value="Delete selected" onclick="ajaxDelete()" disabled>
   </form>
   ';
   mysqli_close($con);
   ?>
   <script src="ajax.js"></script>
+  <script>
+    const form = document.forms["delete-form"];
+    const button = form.querySelector(".form__delete-button");
+    function handleCheckbox() {
+      const checkboxes = Array.from(form.querySelectorAll(".form__checkbox"));
+      const checkedBoxes = checkboxes.filter((checkbox) => {
+        return checkbox.checked;
+      });
+      if (checkedBoxes.length) {
+        button.removeAttribute("disabled");
+      } else {
+        button.setAttribute("disabled", true);
+      }
+      button.value = `Delete selected${checkedBoxes.length ? " (" + checkedBoxes.length + ")" : ""}`;
+    }
+  </script>
 </body>
 
 </html>
