@@ -5,54 +5,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DnD Character Sheet Manager</title>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <?php
   /* TODO
-    gate pages being only accessible with db
-    style additions
+    style & class additions
   */
   include 'func.php'; // conf.php is already included
 
   if (!isDatabaseExist()) { // if db doesn't exist
     echo '
-      <form action="db-create.php">
+    <main class="main">
+      <form class="form" action="db-create.php">
         <p>Database not found! Create one?</p>
-        <input type="submit" value="Create DB">
+        <input type="submit" class="form__create-button" value="Create DB">
       </form>
+    </main>
     ';
   } else { // if db does exist
     $con = mysqli_connect(HOST, USER, PASS, DB)
       or die("Connection Error" . mysqli_error($con)); // and restart connection w/ DB set, now that it exists
 
     echo '
-      <a href="index.php">Search</a>
-      <a href="char-create.php">Create</a>
-      <a href="char-delete.php">Delete</a>
+    <header class="header">
+      <nav class="navbar">
+        <a class="navbar__link" href="index.php">Search</a>
+        <a class="navbar__link" href="char-create.php">Create</a>
+        <a class="navbar__link" href="char-delete.php">Delete</a>
+      </nav>
+    </header>
     '; // navbar
 
     echo '
-    <form>
-      <input type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="char name" autofocus>
-    </form>
+    <main class="main">
+      <form class="search-box">
+        <input type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="char name" autofocus>
+      </form>
     '; // search/filter
 
     $sql = "SELECT * FROM characters"; // query the table
     $res = mysqli_query($con, $sql);
     if (!mysqli_num_rows($res)) { // if there are no characters to list
-      echo "No one's around to list.";
+      echo "<p>No one's around to list.</p>";
     } else { // build the table
       echo '
-      <table>
+      <table class="char-table">
         <thead>
-          <tr>
+          <tr class="char-table__row_header">
             <th>Name</th>
             <th>LV</th>
             <th>Class</th>
@@ -69,7 +70,7 @@
       echo '<tbody id="options">';
 
       while ($row = mysqli_fetch_assoc($res)) {
-        echo '<tr class="table-row">';
+        echo '<tr class="char-table__row">';
         echo '<td>' . $row['name'] . '</td>';
         echo '<td>' . $row['lvl'] . '</td>';
         echo '<td>' . $row['class'] . '</td>';
@@ -83,13 +84,17 @@
       }
 
       echo '
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </main>
       ';
     }
     mysqli_close($con);
   }
   ?>
+  <footer class="footer">
+    <p class="author">Made by Arsen M.</p>
+  </footer>
   <script src="ajax.js"></script>
 </body>
 

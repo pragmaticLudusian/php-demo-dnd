@@ -12,6 +12,7 @@ if (!isDatabaseExist()) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DnD Character Sheet Manager (delete mode)</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       background-color: maroon;
@@ -22,41 +23,45 @@ if (!isDatabaseExist()) {
 
 <body>
   <?php
-
   $con = mysqli_connect(HOST, USER, PASS, DB)
     or die("Connection Error" . mysqli_error($con));
 
   echo '
-  <a href="index.php">Search</a>
-  <a href="char-create.php">Create</a>
-  <a href="char-delete.php">Delete</a>
+  <header class="header">
+    <nav class="navbar">
+      <a class="navbar__link" href="index.php">Search</a>
+      <a class="navbar__link" href="char-create.php">Create</a>
+      <a class="navbar__link" href="char-delete.php">Delete</a>
+    </nav>
+  </header>
   '; // navbar
 
   $sql = "SELECT * FROM characters";
   $res = mysqli_query($con, $sql);
 
   echo '
-  <form id="delete-form" action="index.php" method="POST" onsubmit="ajaxDelete(event)">
-    <table>
-      <thead>
-        <tr>
-          <th>DEL</th>
-          <th>Name</th>
-          <th>LV</th>
-          <th>Class</th>
-          <th>STR</th>
-          <th>DEX</th>
-          <th>CON</th>
-          <th>INT</th>
-          <th>WIS</th>
-          <th>CHA</th>
-        </tr>
-      </thead>
+  <main class="main">
+    <form class="form" id="delete-form" action="index.php" method="POST" onsubmit="ajaxDelete(event)">
+      <table class="char-table">
+        <thead>
+          <tr class="char-table__row_header">
+            <th>DEL</th>
+            <th>Name</th>
+            <th>LV</th>
+            <th>Class</th>
+            <th>STR</th>
+            <th>DEX</th>
+            <th>CON</th>
+            <th>INT</th>
+            <th>WIS</th>
+            <th>CHA</th>
+          </tr>
+        </thead>
   ';
   echo '<tbody id="options">';
 
   while ($row = mysqli_fetch_assoc($res)) {
-    echo '<tr class="table-row">';
+    echo '<tr class="char-table__row">';
     echo '<td><input type="checkbox" class="form__checkbox" onchange="handleCheckbox()" id="char-' . $row['id'] . '"></td>';
     echo '<td>' . $row['name'] . '</td>';
     echo '<td>' . $row['lvl'] . '</td>';
@@ -70,14 +75,17 @@ if (!isDatabaseExist()) {
     echo '</tr>';
   }
 
-  echo '
-      </tbody>
-    </table>
-    <input class="form__delete-button" type="submit" value="Delete selected" disabled>
-  </form>
+  echo '</tbody>
+      </table>
+      <input class="form__delete-button" type="submit" value="Delete selected" disabled>
+    </form>
+  </main>
   ';
   mysqli_close($con);
   ?>
+  <footer class="footer">
+    <p class="author">Made by Arsen M.</p>
+  </footer>
   <script src="ajax.js"></script>
   <script>
     // inline script for this page's to make the button be interactive - the php's portion is for the deletion function
