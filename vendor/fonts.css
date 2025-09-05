@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/FiraSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Asimovian";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/Asimovian-Regular.ttf") format("truetype");
+}

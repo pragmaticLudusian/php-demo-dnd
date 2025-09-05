@@ -8,17 +8,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="page">
+  <header class="header"></header>
+  <h1 class="header__logo">&#x1f3b2;DnD CharSheet Manager</h1>
+  <nav class="navbar">
+    <a class="navbar__link" href="index.php">Search</a>
+    <a class="navbar__link" href="char-create.php">Create</a>
+    <a class="navbar__link" href="char-delete.php">Delete</a>
+  </nav>
+  </header>
   <?php
   /* TODO
     style & class additions
   */
-  include 'func.php'; // conf.php is already included
+  include 'utils/func.php'; // conf.php is already included
 
   if (!isDatabaseExist()) { // if db doesn't exist
     echo '
     <main class="main">
-      <form class="form" action="db-create.php">
+      <form class="form" action="utils/db-create.php">
         <p>Database not found! Create one?</p>
         <input type="submit" class="form__create-button" value="Create DB">
       </form>
@@ -27,16 +35,6 @@
   } else { // if db does exist
     $con = mysqli_connect(HOST, USER, PASS, DB)
       or die("Connection Error" . mysqli_error($con)); // and restart connection w/ DB set, now that it exists
-
-    echo '
-    <header class="header">
-      <nav class="navbar">
-        <a class="navbar__link" href="index.php">Search</a>
-        <a class="navbar__link" href="char-create.php">Create</a>
-        <a class="navbar__link" href="char-delete.php">Delete</a>
-      </nav>
-    </header>
-    '; // navbar
 
     echo '
     <main class="main">
@@ -95,7 +93,7 @@
   <footer class="footer">
     <p class="author">Made by Arsen M.</p>
   </footer>
-  <script src="ajax.js"></script>
+  <script src="utils/ajax.js"></script>
 </body>
 
 </html>

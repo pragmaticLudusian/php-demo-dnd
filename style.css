@@ -1,4 +1,17 @@
-body {
+@import url(vendor/normalize.css);
+@import url(vendor/fonts.css);
+
+.page {
   background-color: #609;
   color: white;
+  font-family: "Asimovian", "Tahoma", sans-serif;
+}
+
+.header {
+}
+
+.navbar {
+}
+
+.navbar__link {
 }
