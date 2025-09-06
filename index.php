@@ -38,8 +38,8 @@
 
     echo '
     <main class="main">
-      <form class="search-box">
-        <input type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="char name" autofocus>
+      <form class="search">
+        <input class="search__input" type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="char name" autofocus>
       </form>
     '; // search/filter
 
@@ -51,7 +51,7 @@
       echo '
       <table class="char-table">
         <thead>
-          <tr class="char-table__row_header">
+          <tr class="char-table__row char-table__row_header">
             <th>Name</th>
             <th>LV</th>
             <th>Class</th>

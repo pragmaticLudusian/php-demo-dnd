@@ -11,7 +11,17 @@
   color: white;
   font-family: "Asimovian", "Tahoma", sans-serif;
   display: grid;
-  grid-template-columns: repeat(2, minmax(50%, 640px));
+  grid-template-columns: minmax(360px, 50%) minmax(480px, 50%);
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.page_name_create {
+  background-color: #069;
+}
+
+.page_name_delete {
+  background-color: #690000;
 }
 
 .header {
@@ -19,6 +29,7 @@
 
 .header__logo {
   margin: 0;
+  padding-right: 20px;
 }
 
 .navbar {
@@ -36,6 +47,30 @@
 .main {
   grid-column: 2;
   grid-row: 1 / span 2;
+}
+
+.search__input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.char-table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.char-table__row:nth-child(2n) {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.char-table__row_header {
+  background-color: black;
+  border-bottom: 1px solid white;
+}
+
+.char-table td {
+  padding: 0 2px;
 }
 
 .footer {
