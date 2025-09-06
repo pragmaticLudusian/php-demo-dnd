@@ -50,7 +50,7 @@
 }
 
 .main__table-container {
-  max-height: 480px;
+  max-height: calc(24.5px * 13 - 5px);
   overflow-y: auto;
   padding-bottom: 1px; /* only show scrolling where necessary */
 }
