@@ -10,8 +10,10 @@ if (isset($_GET['q'])) {
   if (!mysqli_num_rows($res)) {
     echo "<tr><td colspan='9'>no suggestiones</td></tr>";
   } else {
+    $i = 1;
     while ($row = mysqli_fetch_assoc($res)) {
-      echo '<tr>';
+      echo '<tr class="char-table__row' . ($i % 2 == 0 ? ' char-table__row_even' : '') . '">';
+      $i++;
       echo '<td>' . $row['name'] . '</td>';
       echo '<td>' . $row['lvl'] . '</td>';
       echo '<td>' . $row['class'] . '</td>';
