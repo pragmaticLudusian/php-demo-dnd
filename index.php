@@ -9,13 +9,13 @@
 </head>
 
 <body class="page">
-  <header class="header"></header>
-  <h1 class="header__logo">&#x1f3b2;DnD CharSheet Manager</h1>
-  <nav class="navbar">
-    <a class="navbar__link" href="index.php">Search</a>
-    <a class="navbar__link" href="char-create.php">Create</a>
-    <a class="navbar__link" href="char-delete.php">Delete</a>
-  </nav>
+  <header class="header">
+    <h1 class="header__logo">&#x1f3b2;DnD Character Sheet Manager</h1>
+    <nav class="navbar">
+      <a class="navbar__link" href="index.php">Search</a>
+      <a class="navbar__link" href="char-create.php">Create</a>
+      <a class="navbar__link" href="char-delete.php">Delete</a>
+    </nav>
   </header>
   <?php
   /* TODO
@@ -91,7 +91,7 @@
   }
   ?>
   <footer class="footer">
-    <p class="author">Made by Arsen M.</p>
+    <p class="author">Made by <a class="author__link" href="https://github.com/pragmaticLudusian">Arsen M.</a></p>
   </footer>
   <script src="utils/ajax.js"></script>
 </body>

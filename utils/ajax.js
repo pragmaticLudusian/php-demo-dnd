@@ -7,7 +7,7 @@ function ajaxHint(string) {
       opt.innerHTML = this.responseText; // echo html elements responds right here
     }
   };
-  xmlhttp.open("GET", "hint.php?q=" + string, true); // true being async; opens channel to insert the needed HTML elements
+  xmlhttp.open("GET", "utils/hint.php?q=" + string, true); // true being async; opens channel to insert the needed HTML elements
   xmlhttp.send(); // end response
 }
 
@@ -25,7 +25,7 @@ function ajaxDelete(event) {
   );
   if (isConfirmed) {
     if (!delArray.length) return; // assume (delArray.length)
-    xmlhttp.open("GET", "delete.php?q=" + delArray.join(","), false);
+    xmlhttp.open("GET", "utils/delete.php?q=" + delArray.join(","), false);
     xmlhttp.send();
   } else {
     // even if denied, form action will still take effect unless preventDefault is used (passed from onsubmit)

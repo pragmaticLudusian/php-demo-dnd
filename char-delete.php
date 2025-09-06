@@ -86,7 +86,7 @@ if (!isDatabaseExist()) {
   <footer class="footer">
     <p class="author">Made by Arsen M.</p>
   </footer>
-  <script src="ajax.js"></script>
+  <script src="utils/ajax.js"></script>
   <script>
     // inline script for this page's to make the button be interactive - the php's portion is for the deletion function
     const form = document.forms["delete-form"];
