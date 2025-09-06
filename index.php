@@ -38,8 +38,8 @@
 
     echo '
     <main class="main">
-      <form class="search">
-        <input class="search__input" type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="char name" autofocus>
+      <form class="main__search">
+        <input class="main__search-input" type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="Character name" autofocus>
       </form>
     '; // search/filter
 
@@ -49,26 +49,29 @@
       echo "<p>No one's around to list.</p>";
     } else { // build the table
       echo '
-      <table class="char-table">
-        <thead>
-          <tr class="char-table__row char-table__row_header">
-            <th>Name</th>
-            <th>LV</th>
-            <th>Class</th>
-            <th>STR</th>
-            <th>DEX</th>
-            <th>CON</th>
-            <th>INT</th>
-            <th>WIS</th>
-            <th>CHA</th>
-          </tr>
-        </thead>
+      <div class="main__table-container">
+        <table class="char-table">
+          <thead>
+            <tr class="char-table__row char-table__row_header">
+              <th>Name</th>
+              <th>LV</th>
+              <th>Class</th>
+              <th>STR</th>
+              <th>DEX</th>
+              <th>CON</th>
+              <th>INT</th>
+              <th>WIS</th>
+              <th>CHA</th>
+            </tr>
+          </thead>
       ';
       // preload table on page load - repeated code but more functional w/out needing to create another #id section
       echo '<tbody id="options">';
 
+      $i = 1;
       while ($row = mysqli_fetch_assoc($res)) {
-        echo '<tr class="char-table__row">';
+        echo '<tr class="char-table__row' . ($i % 2 == 0 ? ' char-table__row_even' : '') . '">';
+        $i++;
         echo '<td>' . $row['name'] . '</td>';
         echo '<td>' . $row['lvl'] . '</td>';
         echo '<td>' . $row['class'] . '</td>';
@@ -82,8 +85,9 @@
       }
 
       echo '
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </main>
       ';
     }
@@ -91,7 +95,9 @@
   }
   ?>
   <footer class="footer">
-    <p class="author">Made by <a class="author__link" href="https://github.com/pragmaticLudusian">Arsen M.</a></p>
+    <p class="author footer__author">Made w/&#x1f49c; by <a class="author__link"
+        href="https://github.com/pragmaticLudusian">Arsen
+        M.</a></p>
   </footer>
   <script src="utils/ajax.js"></script>
 </body>

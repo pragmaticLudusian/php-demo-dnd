@@ -12,6 +12,7 @@
   font-family: "Asimovian", "Tahoma", sans-serif;
   display: grid;
   grid-template-columns: minmax(360px, 50%) minmax(480px, 50%);
+  grid-template-rows: repeat(2, 160px);
   font-size: 20px;
   line-height: 1.2;
 }
@@ -24,15 +25,9 @@
   background-color: #690000;
 }
 
-.header {
-}
-
 .header__logo {
   margin: 0;
   padding-right: 20px;
-}
-
-.navbar {
 }
 
 .navbar__link {
@@ -49,9 +44,15 @@
   grid-row: 1 / span 2;
 }
 
-.search__input {
+.main__search-input {
   width: 100%;
   margin-bottom: 10px;
+}
+
+.main__table-container {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-bottom: 1px; /* only show scrolling where necessary */
 }
 
 .char-table {
@@ -60,20 +61,21 @@
   border-collapse: collapse;
 }
 
-.char-table__row:nth-child(2n) {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 .char-table__row_header {
   background-color: black;
   border-bottom: 1px solid white;
+}
+
+.char-table__row_even {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .char-table td {
   padding: 0 2px;
 }
 
-.footer {
+.footer__author {
+  margin: 0;
 }
 
 .author__link {
