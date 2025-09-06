@@ -15,7 +15,7 @@ if (!isDatabaseExist()) {
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="page page_name_create">
   <?php
   echo '
   <header class="header">

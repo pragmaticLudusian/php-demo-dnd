@@ -13,15 +13,9 @@ if (!isDatabaseExist()) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DnD Character Sheet Manager (delete mode)</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      background-color: maroon;
-      color: white;
-    }
-  </style>
 </head>
 
-<body>
+<body class="page page_name_delete">
   <?php
   $con = mysqli_connect(HOST, USER, PASS, DB)
     or die("Connection Error" . mysqli_error($con));
