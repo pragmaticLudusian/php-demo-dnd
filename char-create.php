@@ -24,8 +24,7 @@ if (!isDatabaseExist()) {
       <a class="navbar__link" href="char-delete.php">Delete</a>
     </nav>
   </header>
-  <?php
-  echo '
+
   <main class="main">
     <form class="form form_name_create" id="create-form" action="#" method="POST">
       <input type="text" name="Name" placeholder="Character name" required>
@@ -40,10 +39,9 @@ if (!isDatabaseExist()) {
       <input type="submit" value="Create char">
     </form>
   </main>
-  ';
-  ?>
 
   <?php
+  // onSubmit creating the character
   if (isset($_POST['Name'])) {
     $name = $_POST['Name']; // case-sensitive to name property
     $class = $_POST['Class'];
@@ -71,11 +69,13 @@ if (!isDatabaseExist()) {
     exit(); // safety cap solution
   }
   ?>
+
   <footer class="footer">
     <p class="author footer__author">Made w/&#x1f49c; by <a class="author__link"
         href="https://github.com/pragmaticLudusian">Arsen
         M.</a></p>
   </footer>
+
   <script>
     // inline script to autofill values to the stat input boxes
     const stats = [15, 14, 13, 12, 10, 8]; // typical DnD attribute scores
@@ -86,7 +86,7 @@ if (!isDatabaseExist()) {
     }
     const form = document.forms["create-form"];
     const inputElements = Array.from(form.querySelectorAll(".form__stat-input"));
-    inputElements.splice(0, 1); // remove Lvl
+    inputElements.splice(0, 1); // remove Lvl for randomization
     inputElements.forEach((input, index) => {
       input.value = statsShuffled[index];
     })
