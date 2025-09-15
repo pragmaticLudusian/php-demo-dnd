@@ -44,7 +44,10 @@
   grid-row: 1 / span 2;
 }
 
-.main__search-input {
+.form {
+}
+
+.form__search-input {
   width: 100%;
   margin-bottom: 10px;
 }
@@ -72,6 +75,10 @@
 
 .char-table td {
   padding: 0 2px;
+}
+
+.form__stat-input {
+  width: 40px;
 }
 
 .footer__author {

@@ -18,16 +18,13 @@
     </nav>
   </header>
   <?php
-  /* TODO
-    style & class additions
-  */
   include 'utils/func.php'; // conf.php is already included
-
+  
   if (!isDatabaseExist()) { // if db doesn't exist
     echo '
     <main class="main">
-      <form class="form" action="utils/db-create.php">
-        <p>Database not found! Create one?</p>
+      <form class="form form_name_create-db" action="utils/db-create.php">
+        <p class="form__msg">Database not found! Create one?</p>
         <input type="submit" class="form__create-button" value="Create DB">
       </form>
     </main>
@@ -35,18 +32,18 @@
   } else { // if db does exist
     $con = mysqli_connect(HOST, USER, PASS, DB)
       or die("Connection Error" . mysqli_error($con)); // and restart connection w/ DB set, now that it exists
-
+  
     echo '
     <main class="main">
-      <form class="main__search">
-        <input class="main__search-input" type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="Character name" autofocus>
+      <form class="form form_name_search">
+        <input class="form__search-input" type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="Character name" autofocus>
       </form>
     '; // search/filter
-
+  
     $sql = "SELECT * FROM characters"; // query the table
     $res = mysqli_query($con, $sql);
     if (!mysqli_num_rows($res)) { // if there are no characters to list
-      echo "<p>No one's around to list.</p>";
+      echo '<p class="form__msg">No one\'s around to list.</p>';
     } else { // build the table
       echo '
       <div class="main__table-container">

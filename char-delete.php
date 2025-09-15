@@ -16,19 +16,17 @@ if (!isDatabaseExist()) {
 </head>
 
 <body class="page page_name_delete">
-  <?php
-  $con = mysqli_connect(HOST, USER, PASS, DB)
-    or die("Connection Error" . mysqli_error($con));
-
-  echo '
   <header class="header">
+    <h1 class="header__logo">&#x1f3b2;DnD Character Sheet Manager // Delete</h1>
     <nav class="navbar">
       <a class="navbar__link" href="index.php">Search</a>
       <a class="navbar__link" href="char-create.php">Create</a>
       <a class="navbar__link" href="char-delete.php">Delete</a>
     </nav>
   </header>
-  '; // navbar
+  <?php
+  $con = mysqli_connect(HOST, USER, PASS, DB)
+    or die("Connection Error" . mysqli_error($con));
 
   $sql = "SELECT * FROM characters";
   $res = mysqli_query($con, $sql);

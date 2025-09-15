@@ -16,29 +16,27 @@ if (!isDatabaseExist()) {
 </head>
 
 <body class="page page_name_create">
-  <?php
-  echo '
   <header class="header">
+    <h1 class="header__logo">&#x1f3b2;DnD Character Sheet Manager // Create</h1>
     <nav class="navbar">
       <a class="navbar__link" href="index.php">Search</a>
       <a class="navbar__link" href="char-create.php">Create</a>
       <a class="navbar__link" href="char-delete.php">Delete</a>
     </nav>
   </header>
-  '; // navbar
-
+  <?php
   echo '
   <main class="main">
-    <form class="form" action="#" method="POST">
+    <form class="form form_name_create" id="create-form" action="#" method="POST">
       <input type="text" name="Name" placeholder="Character name" required>
       <input type="text" name="Class" placeholder="Character class" required>
-      <input type="number" name="Level" value="1" min="1" max="99" required style="width: 40px;">
-      <input type="number" name="Str" value="14" min="1" max="99" required style="width: 40px;">
-      <input type="number" name="Dex" value="8" min="1" max="99" required style="width: 40px;">
-      <input type="number" name="Con" value="15" min="1" max="99" required style="width: 40px;">
-      <input type="number" name="Int" value="10" min="1" max="99" required style="width: 40px;">
-      <input type="number" name="Wis" value="12" min="1" max="99" required style="width: 40px;">
-      <input type="number" name="Cha" value="13" min="1" max="99" required style="width: 40px;">
+      <input type="number" class="form__stat-input" name="Level" value="1" min="1" max="99" required>
+      <input type="number" class="form__stat-input" name="Str" min="1" max="99" required>
+      <input type="number" class="form__stat-input" name="Dex" min="1" max="99" required>
+      <input type="number" class="form__stat-input" name="Con" min="1" max="99" required>
+      <input type="number" class="form__stat-input" name="Int" min="1" max="99" required>
+      <input type="number" class="form__stat-input" name="Wis" min="1" max="99" required>
+      <input type="number" class="form__stat-input" name="Cha" min="1" max="99" required>
       <input type="submit" value="Create char">
     </form>
   </main>
@@ -74,7 +72,9 @@ if (!isDatabaseExist()) {
   }
   ?>
   <footer class="footer">
-    <p class="author">Made by Arsen M.</p>
+    <p class="author footer__author">Made w/&#x1f49c; by <a class="author__link"
+        href="https://github.com/pragmaticLudusian">Arsen
+        M.</a></p>
   </footer>
 </body>
 
