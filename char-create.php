@@ -76,6 +76,21 @@ if (!isDatabaseExist()) {
         href="https://github.com/pragmaticLudusian">Arsen
         M.</a></p>
   </footer>
+  <script>
+    // inline script to autofill values to the stat input boxes
+    const stats = [15, 14, 13, 12, 10, 8]; // typical DnD attribute scores
+    const statsShuffled = [];
+    for (let i = 0; i < 6; i++) {
+      let rand = Math.floor(Math.random() * stats.length); // pick randomly from a shrinking list...
+      statsShuffled.push(stats.splice(rand, 1)[0]); // ...then add the raw value to the new list
+    }
+    const form = document.forms["create-form"];
+    const inputElements = Array.from(form.querySelectorAll(".form__stat-input"));
+    inputElements.splice(0, 1); // remove Lvl
+    inputElements.forEach((input, index) => {
+      input.value = statsShuffled[index];
+    })
+  </script>
 </body>
 
 </html>
