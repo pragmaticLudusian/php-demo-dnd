@@ -44,9 +44,6 @@
   grid-row: 1 / span 2;
 }
 
-.form {
-}
-
 .form__search-input {
   width: 100%;
   margin-bottom: 10px;
@@ -79,6 +76,39 @@
 
 .form__stat-input {
   width: 40px;
+}
+
+.form__header {
+  display: flex;
+  align-items: baseline;
+}
+
+.form__header-label {
+  flex-shrink: 0;
+}
+
+.form__header-text {
+  min-width: 0;
+  flex: 1; /* override browser width for inputs */
+}
+
+.form__row {
+  display: block;
+  margin: 4px;
+}
+
+.form__row-label {
+  display: inline-block;
+  width: 40px;
+}
+
+.form__footer {
+  width: 100%;
+  text-align: center;
+}
+
+.form__submit {
+  width: 50%;
 }
 
 .footer__author {

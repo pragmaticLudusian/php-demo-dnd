@@ -27,16 +27,40 @@ if (!isDatabaseExist()) {
 
   <main class="main">
     <form class="form form_name_create" id="create-form" action="#" method="POST">
-      <input type="text" name="Name" placeholder="Character name" required>
-      <input type="text" name="Class" placeholder="Character class" required>
-      <input type="number" class="form__stat-input" name="Level" value="1" min="1" max="99" required>
-      <input type="number" class="form__stat-input" name="Str" min="1" max="99" required>
-      <input type="number" class="form__stat-input" name="Dex" min="1" max="99" required>
-      <input type="number" class="form__stat-input" name="Con" min="1" max="99" required>
-      <input type="number" class="form__stat-input" name="Int" min="1" max="99" required>
-      <input type="number" class="form__stat-input" name="Wis" min="1" max="99" required>
-      <input type="number" class="form__stat-input" name="Cha" min="1" max="99" required>
-      <input type="submit" value="Create char">
+      <div class="form__header">
+        <input type="text" class="form__header-text" name="Name" placeholder="Character name" required>
+        <span class="form__header-label">,&nbsp;Level&nbsp;</span>
+        <input type="number" class="form__stat-input" name="Level" value="1" min="1" max="99" required>
+        <span class="form__header-label">&nbsp;</span>
+        <input type="text" class="form__header-text" name="Class" placeholder="Character class" required>
+      </div>
+      <label class="form__row">
+        <span class="form__row-label">STR</span>
+        <input type="number" class="form__stat-input" name="Str" min="1" max="99" required>
+      </label>
+      <label class="form__row">
+        <span class="form__row-label">DEX</span>
+        <input type="number" class="form__stat-input" name="Dex" min="1" max="99" required>
+      </label>
+      <label class="form__row">
+        <span class="form__row-label">CON</span>
+        <input type="number" class="form__stat-input" name="Con" min="1" max="99" required>
+      </label>
+      <label class="form__row">
+        <span class="form__row-label">INT</span>
+        <input type="number" class="form__stat-input" name="Int" min="1" max="99" required>
+      </label>
+      <label class="form__row">
+        <span class="form__row-label">WIS</span>
+        <input type="number" class="form__stat-input" name="Wis" min="1" max="99" required>
+      </label>
+      <label class="form__row">
+        <span class="form__row-label">CHA</span>
+        <input type="number" class="form__stat-input" name="Cha" min="1" max="99" required>
+      </label>
+      <div class="form__footer">
+        <input type="submit" class="form__submit" value="Create character">
+      </div>
     </form>
   </main>
 
