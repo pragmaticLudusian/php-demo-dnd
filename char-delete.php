@@ -36,8 +36,8 @@ if (!isDatabaseExist()) {
     <form class="form" id="delete-form" action="index.php" method="POST" onsubmit="ajaxDelete(event)">
       <table class="char-table">
         <thead>
-          <tr class="char-table__row_header">
-            <th>DEL</th>
+          <tr class="char-table__row char-table__row_data_header">
+            <th class="char-table__col char-table__col_delete">DEL</th>
             <th>Name</th>
             <th>LV</th>
             <th>Class</th>
@@ -75,9 +75,13 @@ if (!isDatabaseExist()) {
   ';
   mysqli_close($con);
   ?>
+
   <footer class="footer">
-    <p class="author">Made by Arsen M.</p>
+    <p class="author footer__author">Made w/&#x1f49c; by <a class="author__link"
+        href="https://github.com/pragmaticLudusian">Arsen
+        M.</a></p>
   </footer>
+
   <script src="utils/ajax.js"></script>
   <script>
     // inline script for this page's to make the button be interactive - the php's portion is for the deletion function

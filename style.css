@@ -61,13 +61,20 @@
   border-collapse: collapse;
 }
 
-.char-table__row_header {
+.char-table__row {
+}
+
+.char-table__row_data_header {
   background-color: black;
   border-bottom: 1px solid white;
 }
 
-.char-table__row_even {
+.char-table__row_data_even {
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.char-table__col_delete {
+  background-color: crimson;
 }
 
 .char-table td {
