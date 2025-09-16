@@ -19,7 +19,7 @@
   </header>
   <?php
   include 'utils/func.php'; // conf.php is already included
-  
+
   if (!isDatabaseExist()) { // if db doesn't exist
     echo '
     <main class="main">
@@ -32,14 +32,14 @@
   } else { // if db does exist
     $con = mysqli_connect(HOST, USER, PASS, DB)
       or die("Connection Error" . mysqli_error($con)); // and restart connection w/ DB set, now that it exists
-  
+
     echo '
     <main class="main">
       <form class="form form_name_search">
         <input class="form__search-input" type="search" name="keyword" onkeyup="ajaxHint(this.value)" placeholder="Character name" autofocus>
       </form>
     '; // search/filter
-  
+
     $sql = "SELECT * FROM characters"; // query the table
     $res = mysqli_query($con, $sql);
     if (!mysqli_num_rows($res)) { // if there are no characters to list
@@ -49,7 +49,7 @@
       <div class="main__table-container">
         <table class="char-table">
           <thead>
-            <tr class="char-table__row char-table__row_header">
+            <tr class="char-table__row char-table__row_data_header">
               <th>Name</th>
               <th>LV</th>
               <th>Class</th>
@@ -67,7 +67,7 @@
 
       $i = 1;
       while ($row = mysqli_fetch_assoc($res)) {
-        echo '<tr class="char-table__row' . ($i % 2 == 0 ? ' char-table__row_even' : '') . '">';
+        echo '<tr class="char-table__row' . ($i % 2 == 0 ? ' char-table__row_data_even' : '') . '">';
         $i++;
         echo '<td>' . $row['name'] . '</td>';
         echo '<td>' . $row['lvl'] . '</td>';

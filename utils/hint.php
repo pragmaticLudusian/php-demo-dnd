@@ -12,7 +12,7 @@ if (isset($_GET['q'])) {
   } else {
     $i = 1;
     while ($row = mysqli_fetch_assoc($res)) {
-      echo '<tr class="char-table__row' . ($i % 2 == 0 ? ' char-table__row_even' : '') . '">';
+      echo '<tr class="char-table__row' . ($i % 2 == 0 ? ' char-table__row_data_even' : '') . '">';
       $i++;
       echo '<td>' . $row['name'] . '</td>';
       echo '<td>' . $row['lvl'] . '</td>';
