@@ -18,7 +18,7 @@
 }
 
 .page_name_create {
-  background-color: #069;
+  background-color: #006900;
 }
 
 .page_name_delete {
@@ -59,9 +59,6 @@
   width: 100%;
   text-align: center;
   border-collapse: collapse;
-}
-
-.char-table__row {
 }
 
 .char-table__row_data_header {

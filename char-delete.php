@@ -33,27 +33,30 @@ if (!isDatabaseExist()) {
 
   echo '
   <main class="main">
-    <form class="form" id="delete-form" action="index.php" method="POST" onsubmit="ajaxDelete(event)">
-      <table class="char-table">
-        <thead>
-          <tr class="char-table__row char-table__row_data_header">
-            <th class="char-table__col char-table__col_delete">DEL</th>
-            <th>Name</th>
-            <th>LV</th>
-            <th>Class</th>
-            <th>STR</th>
-            <th>DEX</th>
-            <th>CON</th>
-            <th>INT</th>
-            <th>WIS</th>
-            <th>CHA</th>
-          </tr>
-        </thead>
+    <form class="form form_name_delete" id="delete-form" action="index.php" method="POST" onsubmit="ajaxDelete(event)">
+      <div class="main__table-container">
+        <table class="char-table">
+          <thead>
+            <tr class="char-table__row char-table__row_data_header">
+              <th class="char-table__col char-table__col_delete">DEL</th>
+              <th>Name</th>
+              <th>LV</th>
+              <th>Class</th>
+              <th>STR</th>
+              <th>DEX</th>
+              <th>CON</th>
+              <th>INT</th>
+              <th>WIS</th>
+              <th>CHA</th>
+            </tr>
+          </thead>
   ';
   echo '<tbody id="options">';
 
+  $i = 1;
   while ($row = mysqli_fetch_assoc($res)) {
-    echo '<tr class="char-table__row">';
+    echo '<tr class="char-table__row' . ($i % 2 == 0 ? ' char-table__row_data_even' : '') . '">';
+    $i++;
     echo '<td><input type="checkbox" class="form__checkbox" onchange="handleCheckbox()" id="char-' . $row['id'] . '"></td>';
     echo '<td>' . $row['name'] . '</td>';
     echo '<td>' . $row['lvl'] . '</td>';
@@ -67,8 +70,10 @@ if (!isDatabaseExist()) {
     echo '</tr>';
   }
 
-  echo '</tbody>
-      </table>
+  echo '
+          </tbody>
+        </table>
+      </div>
       <input class="form__delete-button" type="submit" value="Delete selected" disabled>
     </form>
   </main>
