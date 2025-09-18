@@ -6,6 +6,17 @@ Used for demonstration purposes of creating and managing a web page and database
 
 Developed and deployed with [XAMPP](https://www.apachefriends.org/index.html) and [VSCode](https://code.visualstudio.com).
 
+## Features
+
+- HTML5
+- CSS
+- JS
+- PHP
+- MySQL / MariaDB
+- AJAX (Async HTTP) functions
+- Media queries (planned)
+- Login session and server hosting (planned)
+
 ## Installation
 
 1. Download and install [XAMPP](https://www.apachefriends.org/download.html)
