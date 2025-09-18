@@ -74,7 +74,9 @@ if (!isDatabaseExist()) {
           </tbody>
         </table>
       </div>
-      <input class="form__delete-button" type="submit" value="Delete selected" disabled>
+      <div class="form__footer">
+        <input class="form__submit" type="submit" value="Delete selected" disabled>
+      </div>
     </form>
   </main>
   ';
